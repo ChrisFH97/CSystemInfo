@@ -5,12 +5,6 @@ const osu = require('node-os-utils')
 
 function DisplayUsuage(){
     var cpu = osu.cpu
-    var drive = osu.drive
-    drive.info()
-    .then(info => {
-      document.getElementById("usuage2").innerHTML = info;
-    })
-
     cpu.usage()
     .then(info => {
       document.getElementById("usuage").innerHTML = info;
