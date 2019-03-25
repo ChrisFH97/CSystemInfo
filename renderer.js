@@ -1,5 +1,24 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
+const {app, BrowserWindow} = require('electron')
+const osu = require('node-os-utils')
 
-document.write("test");
+
+
+function DisplayUsuage(){
+    var cpu = osu.cpu
+    var drive = osu.drive
+    drive.info()
+    .then(info => {
+      document.getElementById("usuage2").innerHTML = info;
+    })
+
+    cpu.usage()
+    .then(info => {
+      document.getElementById("usuage").innerHTML = info;
+    })
+
+    
+ 
+
+    
+}
+setInterval(DisplayUsuage, 10*100);
