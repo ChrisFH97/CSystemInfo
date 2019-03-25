@@ -1,0 +1,16 @@
+{
+  "name": "CSystemInfo",
+  "version": "1.0.0",
+  "description": "System Information Viewer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [],
+  "author": "Chris Haig",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^4.1.1"
+  }
+}
