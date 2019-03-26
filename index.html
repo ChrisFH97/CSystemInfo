@@ -20,9 +20,9 @@
         
         <!-- Info box -->
         <script>
-        var tools = require('./renderer');
-        tools.initCPU();
-        setInterval(tools.initCPU,10*40);
+        var renderer = require('./renderer');
+        renderer.initCPU();
+        setInterval(renderer.initCPU,10*40);
         </script>
 
         <br>
@@ -60,7 +60,7 @@
     
         <footer id="myFooter">
           <div class="w3-container w3-theme-l1">
-            <p style="padding-top:10px;">Created By Chris H</p>
+            <p><a id="watermark">Created By Chris H</a></p>
           </div>
         </footer>
       </div>

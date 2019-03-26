@@ -19,12 +19,8 @@
         </div>
         
         <!-- Info box -->
-        <script>var tools = require('./renderer');
-        tools.initMemory();
-        setInterval(tools.initMemory,10*50);
-
-
-        </script>
+        <script>var renderer = require('./renderer');renderer.initMemory();setInterval(renderer.initMemory,10*50);</script>
+        
         <br>
         <div style="  display: -webkit-flex; -webkit-flex-wrap: wrap; display: flex; flex-wrap: wrap;">
 

@@ -1,12 +1,12 @@
-const osu = require('node-os-utils');
 const os = require('os');
 const si = require('systeminformation');
 module.exports = {
 
   initCPU: function(){
 
-    var cpu = osu.cpu;
-    cpu.usage().then(cpuPercentage => {
+
+    si.currentLoad(function(data){
+      var cpuPercentage = data.currentload;
       if(parseInt(cpuPercentage, 10) < 35){
         document.getElementById("usuage").style.color = '#35ff86'
       }else if(parseInt(cpuPercentage, 10) < 50){
@@ -17,8 +17,7 @@ module.exports = {
         document.getElementById("usuage").style.color = '#ff4800'
       }
 
-      document.getElementById("usuage").innerHTML = (cpuPercentage + "%");
-
+      document.getElementById("usuage").innerHTML = (cpuPercentage.toFixed(2)  + "%");
     })
 
     si.cpu(function(data) {
