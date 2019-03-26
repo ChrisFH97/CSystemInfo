@@ -12,44 +12,35 @@
   <body>
 
       <div class="topnav">
-          <a class="active" href="#cpu">CPU</a>
-          <a class="" href="Memory.html">Memory</a>
-          <a class="" href="#cpu">Hardisk</a>
-          <a class="" href="#cpu">Processes</a>
+          <a class="" href="index.html">CPU</a>
+          <a class="active" href="#">Memory</a>
+          <a class="" href="disk.html">Hardisk</a>
+          <a class="" href="process.html">Processes</a>
         </div>
         
         <!-- Info box -->
-        <script>
-        var tools = require('./renderer');
-        tools.initCPU();
-        setInterval(tools.initCPU,10*50);
+        <script>var tools = require('./renderer');
+        tools.initMemory();
+        setInterval(tools.initMemory,10*50);
+
+
         </script>
         <br>
         <div style="  display: -webkit-flex; -webkit-flex-wrap: wrap; display: flex; flex-wrap: wrap;">
 
             <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
                 <div class="card-body">
-                  <h5 class="card-title">CPU Usage</h5>
-                  <p id="usuage" class="card-text"></p>
+                  <h5 class="card-title">Memory Usage</h5>
+                  <p id="used" class="card-text"></p>
                 </div>
               </div>
 
               <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
                   <div class="card-body">
-                    <h5 class="card-title">No of Total Cores</h5>
-                    <p id="cores" class="card-text"></p>
+                    <h5 class="card-title">Memory Available</h5>
+                    <p id="available" class="card-text"></p>
                   </div>
                 </div>
-
-                <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
-                    <div class="card-body">
-                      <h5 class="card-title">CPU Speed</h5>
-                      <p id="speed" class="card-text"></p>
-                    </div>
-                  </div>
-
-
-
         </div>
 
 

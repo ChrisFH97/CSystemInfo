@@ -1,18 +1,57 @@
-const {app, BrowserWindow} = require('electron')
-const osu = require('node-os-utils')
+const osu = require('node-os-utils');
+const os = require('os');
+const si = require('systeminformation');
+module.exports = {
 
+  initCPU: function(){
 
+    var cpu = osu.cpu;
+    cpu.usage().then(cpuPercentage => {
+      if(parseInt(cpuPercentage, 10) < 35){
+        document.getElementById("usuage").style.color = '#35ff86'
+      }else if(parseInt(cpuPercentage, 10) < 50){
+        document.getElementById("usuage").style.color = '#ffd333'
+      }else if(parseInt(cpuPercentage, 10) < 60){
+        document.getElementById("usuage").style.color = '#ffbb32'
+      }else if(parseInt(cpuPercentage, 10) < 80){
+        document.getElementById("usuage").style.color = '#ff4800'
+      }
 
-function DisplayUsuage(){
-    var cpu = osu.cpu
-    cpu.usage()
-    .then(info => {
-      document.getElementById("usuage").innerHTML = info;
+      document.getElementById("usuage").innerHTML = (cpuPercentage + "%");
+
     })
 
-    
- 
+    si.cpu(function(data) {
+      var cores = data.physicalCores;
+      document.getElementById("cores").innerHTML = cores;
+  })
+
+  si.cpu(function(data){
+    var speed = data.speed;
+    document.getElementById("speed").innerHTML = speed + " GHz";
+  })
+
+  },
+
+  initMemory: function(){
+
+    si.mem(function(data){
+      var used = parseInt(data.used, 10);
+      var available = parseInt(data.available, 10);
+      for(var i = 0; i < 3; i++){
+        var used = used / 1024;
+        var available = available / 1024;
+      }
+      document.getElementById("used").innerHTML = used.toFixed(2) + " GB";
+      document.getElementById("available").innerHTML = available.toFixed(2) + " GB";
+    })
+
 
     
-}
-setInterval(DisplayUsuage, 10*100);
+
+  }
+  
+  
+};
+
+
