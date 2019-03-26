@@ -42,6 +42,22 @@ module.exports = {
         var used = used / 1024;
         var available = available / 1024;
       }
+
+      if(used < (available * 0.45) ){
+        document.getElementById("used").style.color = '#35ff86'
+        document.getElementById("available").style.color = '#35ff86'
+      }else if(used < (available * 0.60) ){
+        document.getElementById("used").style.color = '#ffd333'
+        document.getElementById("available").style.color = '#ffd333'
+      }else if(used < (available * 0.75) ){
+        document.getElementById("used").style.color = '#ffbb32'
+        document.getElementById("available").style.color = '#ffbb32'
+      }else if(used < (available * 0.90) ){
+        document.getElementById("used").style.color = '#ff4800'
+        document.getElementById("available").style.color = '#ff4800'
+      }
+
+      
       document.getElementById("used").innerHTML = used.toFixed(2) + " GB";
       document.getElementById("available").innerHTML = available.toFixed(2) + " GB";
     })

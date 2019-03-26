@@ -22,10 +22,13 @@
         <script>
         var tools = require('./renderer');
         tools.initCPU();
-        setInterval(tools.initCPU,10*50);
+        setInterval(tools.initCPU,10*40);
         </script>
+
         <br>
-        <div style="  display: -webkit-flex; -webkit-flex-wrap: wrap; display: flex; flex-wrap: wrap;">
+        <div style=" display: -webkit-flex; -webkit-flex-wrap: wrap; display: flex; flex-wrap: wrap;">
+
+          <!-- Displays the Current CPU Usage to the user and changes every 500ms -->
 
             <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
                 <div class="card-body">
@@ -34,29 +37,30 @@
                 </div>
               </div>
 
+              <!-- Displays the number of cores that the cpu contains (Does not change) -->
+
               <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
-                  <div class="card-body">
-                    <h5 class="card-title">No of Total Cores</h5>
-                    <p id="cores" class="card-text"></p>
-                  </div>
+                <div class="card-body">
+                  <h5 class="card-title">No of Total Cores</h5>
+                  <p id="cores" class="card-text"></p>
                 </div>
+              </div>
 
-                <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
-                    <div class="card-body">
-                      <h5 class="card-title">CPU Speed</h5>
-                      <p id="speed" class="card-text"></p>
-                    </div>
-                  </div>
+                <!-- Displays the speed of the CPU (Does not change) -->
 
-
-
+            <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
+                <div class="card-body">
+                  <h5 class="card-title">CPU Speed</h5>
+                  <p id="speed" class="card-text"></p>
+                </div>
+              </div>
         </div>
 
 
     
         <footer id="myFooter">
           <div class="w3-container w3-theme-l1">
-            <p>Created By Chris H</p>
+            <p style="padding-top:10px;">Created By Chris H</p>
           </div>
         </footer>
       </div>

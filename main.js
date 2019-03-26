@@ -1,4 +1,3 @@
-// Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const qr = require('qr-image');
 const uuidv1 = require('uuid/v1');
@@ -6,11 +5,13 @@ const fs = require('fs');
 const { dialog } = require('electron')
 
 let mainWindow
-
+/*
+  Creates electron window with the Width:630px and the Height:553px with node integration enabled.
+*/
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 630,
+    width: 635,
     height: 553,
     webPreferences: {
       nodeIntegration: true
@@ -20,9 +21,12 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
   mainWindow.setResizable(false)
+  mainWindow.setMenu(null)
 
+
+  //Creates a QR Code containing a UUID that is by used by the mobile app.
   createUUIDQR();
-  
+
   mainWindow.on('closed', function () {
     mainWindow = null
   })
@@ -41,6 +45,9 @@ app.on('activate', function () {
   }
 })
 
+/*
+ * Function for creating  QR Code using the qr-image module. 
+ */
 function createUUIDQR(){
   
   const path = './UIDCode.png'
