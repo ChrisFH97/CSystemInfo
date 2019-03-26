@@ -1,5 +1,9 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
+const qr = require('qr-image');
+const uuidv1 = require('uuid/v1');
+const fs = require('fs');
+const { dialog } = require('electron')
 
 let mainWindow
 
@@ -17,17 +21,14 @@ function createWindow () {
   mainWindow.loadFile('index.html')
   mainWindow.setResizable(false)
 
+  createUUIDQR();
+  
   mainWindow.on('closed', function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     mainWindow = null
   })
 }
 
 app.on('ready', createWindow)
-
-// Quit when all windows are closed.
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
     app.quit()
@@ -39,3 +40,18 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
+function createUUIDQR(){
+  
+  const path = './UIDCode.png'
+
+try {
+  if (!fs.existsSync(path)) {
+     var uuid = uuidv1();
+     qr.image("PC-"+ uuid,{type:'png',size:14}).pipe(fs.createWriteStream("UIDCode.png"));
+  }
+} catch(err) {
+  console.error(err)
+}
+
+}
