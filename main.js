@@ -49,14 +49,20 @@ app.on('activate', function () {
  * Function for creating  QR Code using the qr-image module. 
  */
 function createUUIDQR(){
-  
-  const path = './UIDCode.png'
 
 try {
-  if (!fs.existsSync(path)) {
-     var uuid = uuidv1();
-     qr.image("PC-"+ uuid,{type:'png',size:14}).pipe(fs.createWriteStream("UIDCode.png"));
-  }
+  const storage = 'views/storage/';
+  fs.readdir(storage, function(err, files) {
+    if (err) {
+    } else {
+       if (parseInt(files.length,10) > 0) {
+
+       }else{
+        var uuid = uuidv1();
+        qr.image("PC-"+ uuid,{type:'png',size:14}).pipe(fs.createWriteStream( storage + "PC-"+ uuid +".png"));
+       }
+    }
+});
 } catch(err) {
   console.error(err)
 }
