@@ -52,6 +52,11 @@ function createUUIDQR(){
 
 try {
   const storage = 'views/storage/';
+
+  if (!fs.existsSync(storage)){
+    fs.mkdirSync(storage);
+  }
+
   fs.readdir(storage, function(err, files) {
     if (err) {
     } else {
