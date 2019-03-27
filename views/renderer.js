@@ -94,6 +94,11 @@ module.exports = {
     })
   },
 
+  /*
+    This dipsplays the name of the process the cpu usage of that process, memory usage of that process and also the PID for that
+    process.
+  */
+
   initProcess: function(){
 
     si.processes(function(data){
@@ -119,8 +124,8 @@ module.exports = {
           var cell4 = row.insertCell(3);
   
           cell1.innerHTML = name;
-          cell2.innerHTML = cpuusage;
-          cell3.innerHTML = memusage;
+          cell2.innerHTML = cpuusage + "%";
+          cell3.innerHTML = memusage + " GB";
           cell4.innerHTML = pid;
         }
 

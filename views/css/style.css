@@ -51,3 +51,15 @@
   #watermark:hover{
   color: rgb(0, 162, 255);
   }
+
+  .card{
+    -webkit-transition: all 1s ease-out;
+    -moz-transition: all 1s ease-out;
+    -o-transition: all 1s ease-out;
+    transition: all  1s ease-out;
+  }
+
+  .card:hover{
+    background: rgb(0, 95, 173);
+    color:white;
+  }

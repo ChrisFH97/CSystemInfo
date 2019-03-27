@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel = "stylesheet" type = "text/css" href = "style.css" />
+    <link rel = "stylesheet" type = "text/css" href = "css/style.css" />
     <title>CSystemInfo - System Information Viewer</title>
   </head>
   
@@ -14,9 +14,9 @@
 
       <div class="topnav">
           <a class="" href="index.html">CPU</a>
-          <a class="" href="Memory.html">Memory</a>
+          <a class="active" href="#">Memory</a>
           <a class="" href="disk.html">Storage</a>
-          <a class="active" href="process.html">Processes</a>
+          <a class="" href="process.html">Processes</a>
           <a style="float: right;" class="" href="qr.html"><i class="fas fa-qrcode"></i></a>
         </div>
         
@@ -24,30 +24,33 @@
 
         <script>
           var renderer = require('./renderer');
+  
           setInterval(function(){
-            renderer.initProcess();
-          }, 12*100);
+            renderer.initMemory();
+          }, 400);
   
           </script>
         
-        
+        <br>
         <div style="  display: -webkit-flex; -webkit-flex-wrap: wrap; display: flex; flex-wrap: wrap;">
 
-          <table class="table table-borderless table-dark">
-            <thead>
-              <tr>
+          <!-- Displays the current amount of memory being used by the system. -->
 
-                <th scope="col">Process Name</th>
-                <th scope="col">CPU Usage</th>
-                <th scope="col">Memory Usage</th>
-                <th scope="col">PID</th>
-              </tr>
-            </thead>
-            <tbody id="Processes">
+            <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
+                <div class="card-body">
+                  <h5 class="card-title">Memory Usage</h5>
+                  <p id="used" class="card-text"></p>
+                </div>
+              </div>
 
-            </tbody>
-          </table>
+          <!-- Displays the current amount of memory that is available to the system. -->
 
+              <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
+                  <div class="card-body">
+                    <h5 class="card-title">Memory Available</h5>
+                    <p id="available" class="card-text"></p>
+                  </div>
+                </div>
         </div>
 
         <!-- Author Watermark -->
