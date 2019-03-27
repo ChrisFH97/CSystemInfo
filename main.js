@@ -3,6 +3,7 @@ const qr = require('qr-image');
 const uuidv1 = require('uuid/v1');
 const fs = require('fs');
 const { dialog } = require('electron')
+const udp = require('./udp');
 
 let mainWindow
 /*
@@ -30,6 +31,9 @@ function createWindow () {
   mainWindow.on('closed', function () {
     mainWindow = null
   })
+
+  udp.startListen("Josua");
+
 }
 
 app.on('ready', createWindow)

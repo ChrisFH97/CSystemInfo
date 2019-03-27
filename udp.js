@@ -1,20 +1,41 @@
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
+
+
 //Connect to p2p STUN server
 var RELAY_IP = "";
 var RELAY_PORT = 8080;
-
-
-var uuid = require('uuid');
 var PEERS = [];
-server.bind(4646);
+
+module.exports = {
+    SendAllPeers : function(json){
+        for (index = PEERS.length - 1; index >= 0; --index) {
+            var TempPeer = PEERS[index];
+            var Args = TempPeer.split(":");
+            var RHost = Args[0];//{Rhost}
+            var RPort = Number(Args[1]);//{Rport}
+            server.send(json,RPort,RHost);//Sends packet
+        }
+    },
+
+    sendPacket : function(msg,port,address){
+        server.send(msg,port,address);
+    },
+
+    startListen : function(uuid){
+        server.bind(4646);
+        sendPacket("|ADDPEER|PC-"+uuid+"|", RELAY_PORT, RELAY_IP);
+    }
+}
+
+
 
 server.on('error', (err) => {
   console.log(`error:\n${err.stack}`);
   server.close();
 });
 
-sendPacket("|ADDPEER|PC-"+uuid+"|", RELAY_PORT, RELAY_IP);
+
 
 server.on('message', (msg, rinfo) => {
     var IP = rinfo.address;
@@ -49,19 +70,10 @@ server.on('message', (msg, rinfo) => {
 
 server.on('listening', () => {
   const address = server.address();
-  console.log("PC-" + uuid.v1());
   console.log(`listening ${address.address}:${address.port}`);
 });
 
 function sendPacket(msg,port,address){
     server.send(msg,port,address);
 }
-function SendAllPeers(message1){
-    for (index = PEERS.length - 1; index >= 0; --index) {
-        var TempPeer = PEERS[index];
-        var Args = TempPeer.split(":");
-        var RHost = Args[0];//{Rhost}
-        var RPort = Number(Args[1]);//{Rport}
-        server.send(message1,RPort,RHost);//Sends packet
-    }
-}
+
