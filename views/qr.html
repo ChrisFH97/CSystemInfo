@@ -24,7 +24,12 @@
 
         <br>
         <div style="text-align: center;">
-          <img style="text-align:center;" src="../UIDCode.png" width="256px" height="256px">
+          <img id="qr" style="text-align:center;" width="256px" height="256px">
+          <script>
+            var fs = require('fs');
+            var files = fs.readdirSync('views/storage/');
+            document.getElementById("qr").src = "storage/" + files[0];
+          </script>
           <br><br>
           <h4 style="color:white;">Scan before connecting via the Mobile App</h4>
         </div>

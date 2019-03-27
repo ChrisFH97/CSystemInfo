@@ -1,10 +1,3 @@
-/*
-###################################################################
-## This protocol is used for p2p communication, for any inqiries ##
-###########plese contact me at: CoderSam@protonmail.com############
-####################COPPYRIGHT MOAFOP.com 2019#####################
-###################################################################
-*/
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
 //Connect to p2p STUN server
@@ -20,7 +13,9 @@ server.on('error', (err) => {
   console.log(`error:\n${err.stack}`);
   server.close();
 });
+
 sendPacket("|ADDPEER|PC-"+uuid+"|", RELAY_PORT, RELAY_IP);
+
 server.on('message', (msg, rinfo) => {
     var IP = rinfo.address;
     var Port = rinfo.port;
