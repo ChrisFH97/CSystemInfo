@@ -13,42 +13,39 @@
 
       <div class="topnav">
           <a class="" href="index.html">CPU</a>
-          <a class="active" href="#">Memory</a>
+          <a class="" href="Memory.html">Memory</a>
           <a class="" href="disk.html">Hardisk</a>
-          <a class="" href="process.html">Processes</a>
+          <a class="active" href="process.html">Processes</a>
         </div>
         
         <!-- Info box -->
 
         <script>
           var renderer = require('./renderer');
-  
           setInterval(function(){
-            renderer.initMemory();
-          }, 400);
+            renderer.initProcess();
+          }, 12*100);
   
           </script>
         
-        <br>
+        
         <div style="  display: -webkit-flex; -webkit-flex-wrap: wrap; display: flex; flex-wrap: wrap;">
 
-          <!-- Displays the current amount of memory being used by the system. -->
+          <table class="table table-borderless table-dark">
+            <thead>
+              <tr>
 
-            <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
-                <div class="card-body">
-                  <h5 class="card-title">Memory Usage</h5>
-                  <p id="used" class="card-text"></p>
-                </div>
-              </div>
+                <th scope="col">Process Name</th>
+                <th scope="col">CPU Usage</th>
+                <th scope="col">Memory Usage</th>
+                <th scope="col">PID</th>
+              </tr>
+            </thead>
+            <tbody id="Processes">
 
-          <!-- Displays the current amount of memory that is available to the system. -->
+            </tbody>
+          </table>
 
-              <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
-                  <div class="card-body">
-                    <h5 class="card-title">Memory Available</h5>
-                    <p id="available" class="card-text"></p>
-                  </div>
-                </div>
         </div>
 
         <!-- Author Watermark -->

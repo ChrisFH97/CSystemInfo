@@ -12,17 +12,20 @@
   <body>
 
       <div class="topnav">
-          <a class="active" href="#cpu">CPU</a>
+          <a class="active" href="">CPU</a>
           <a class="" href="Memory.html">Memory</a>
-          <a class="" href="#cpu">Hardisk</a>
-          <a class="" href="#cpu">Processes</a>
+          <a class="" href="disk.html">Storage</a>
+          <a class="" href="process.html">Processes</a>
         </div>
         
         <!-- Info box -->
         <script>
         var renderer = require('./renderer');
-        renderer.initCPU();
-        setInterval(renderer.initCPU,10*40);
+
+        setInterval(function(){
+          renderer.initCPU();
+        }, 400);
+
         </script>
 
         <br>
@@ -56,7 +59,7 @@
               </div>
         </div>
 
-
+        <!-- Author Watermark -->
     
         <footer id="myFooter">
           <div class="w3-container w3-theme-l1">
