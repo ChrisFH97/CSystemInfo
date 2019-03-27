@@ -14,43 +14,19 @@
 
       <div class="topnav">
           <a class="" href="index.html">CPU</a>
-          <a class="active" href="#">Memory</a>
+          <a class="" href="#">Memory</a>
           <a class="" href="disk.html">Storage</a>
           <a class="" href="process.html">Processes</a>
-          <a style="float: right;" class="" href="qr.html"><i class="fas fa-qrcode"></i></a>
+          <a class="active" style="float: right;" class="" href="qr.html"><i class="fas fa-qrcode"></i></a>
         </div>
         
         <!-- Info box -->
 
-        <script>
-          var renderer = require('./renderer');
-  
-          setInterval(function(){
-            renderer.initMemory();
-          }, 400);
-  
-          </script>
-        
         <br>
-        <div style="  display: -webkit-flex; -webkit-flex-wrap: wrap; display: flex; flex-wrap: wrap;">
-
-          <!-- Displays the current amount of memory being used by the system. -->
-
-            <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
-                <div class="card-body">
-                  <h5 class="card-title">Memory Usage</h5>
-                  <p id="used" class="card-text"></p>
-                </div>
-              </div>
-
-          <!-- Displays the current amount of memory that is available to the system. -->
-
-              <div class="card" style="width: 18rem;margin-left: 2%; margin-top: 10px;">
-                  <div class="card-body">
-                    <h5 class="card-title">Memory Available</h5>
-                    <p id="available" class="card-text"></p>
-                  </div>
-                </div>
+        <div style="text-align: center;">
+          <img style="text-align:center;" src="UIDCode.png" width="256px" height="256px">
+          <br><br>
+          <h4 style="color:white;">Scan before connecting via the Mobile App</h4>
         </div>
 
         <!-- Author Watermark -->
