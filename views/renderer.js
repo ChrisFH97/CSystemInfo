@@ -115,21 +115,20 @@ module.exports = {
         var pid = value.pid;
         var cpuusage = value.pcpu;
         var memusage = value.pmem;
-
-        if(cpuusage != 0){
-          var row = Processes.insertRow(0);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2);
-          var cell4 = row.insertCell(3);
-  
-          cell1.innerHTML = name;
-          cell2.innerHTML = cpuusage + "%";
-          cell3.innerHTML = memusage + " GB";
-          cell4.innerHTML = pid;
+        if(pid != "0"){
+          if(cpuusage != 0){
+            var row = Processes.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+    
+            cell1.innerHTML = name;
+            cell2.innerHTML = cpuusage.toFixed(2) + "%";
+            cell3.innerHTML = memusage.toFixed(2) + " GB";
+            cell4.innerHTML = pid;
+          }
         }
-
-        
       });
       
     })
