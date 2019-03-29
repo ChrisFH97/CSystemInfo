@@ -48,8 +48,13 @@ server.on('message', (msg, rinfo) => {
         //|PING|
         console.log("PING");
     }else if(Args[1]=="ADDPEER"){
-        PEERS.push(Args[2]);
-        console.log("AddedPeer: " + Args[2]);
+        if(!($.inArray(Args[2], PEERS))){
+            PEERS.push(Args[2]);
+            console.log("AddedPeer: " + Args[2]);
+            sendPacket("|PING|", Port, IP);
+        }else{
+            console.log("Could not add Peer due to it already being on list, PEER Addr: " + Args[2]);
+        }
         //|ADDPEER|PeerIP:PeerPort|
     }else if(Args[1]=="GetPeerList"){
         //|GetPeerList|
